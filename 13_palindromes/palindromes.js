@@ -1,17 +1,19 @@
 const palindromes = function (string) {
     let n=string.length;
-
-        for(let i=0;i<=n-2;i++){
-            if(string.charCodeAt(n-i-1)>=33 && string.charCodeAt(n-i-1)<=64){
-            if((string.charAt(i)).toUpperCase()===(string.charAt(n-i-2)).toUpperCase())continue;   
-            else return false; 
-            }
-            else{
-                    if((string.charAt(i)).toUpperCase()===(string.charAt(n-i-2)).toUpperCase())continue;   
-                    else return false; 
-                    }
+    let left=0;
+    let right=n-1;
+  while(left<=right){
+    while((string.charCodeAt(left)>=32 && string.charCodeAt(left)<=47 )  || (string.charCodeAt(left)>=58 && string.charCodeAt(left)<=64)) left++;
+    while((string.charCodeAt(right)>=32 && string.charCodeAt(right)<=47 )  || (string.charCodeAt(right)>=58 && string.charCodeAt(right)<=64)) right--;
+    if((string.charAt(left)).toUpperCase()===(string.charAt(right)).toUpperCase()){
+        left++;
+        right--;
     }
-    return true;
+    else{
+        return false;
+    }
+  }
+  return true;
 };
 
 // Do not edit below this line
